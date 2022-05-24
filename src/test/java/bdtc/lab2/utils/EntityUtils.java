@@ -39,7 +39,7 @@ public class EntityUtils {
         return flightEntity;
     }
 
-    public void clearPersonEntitiesCache() {
+    public void clearFlightEntitiesCache() {
         ignite.getOrCreateCache("flight").clear();
     }
 

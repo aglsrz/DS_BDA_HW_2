@@ -5,6 +5,7 @@ import bdtc.lab2.config.ServiceConf;
 import bdtc.lab2.config.UtilsConf;
 import bdtc.lab2.model.FlightEntity;
 import bdtc.lab2.utils.EntityUtils;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,7 +34,12 @@ public class TestServiceControllerTest {
 
     @Before
     public void init() {
-        entityUtils.clearPersonEntitiesCache();
+        entityUtils.clearFlightEntitiesCache();
+    }
+
+    @After
+    public void clear() {
+        entityUtils.clearFlightEntitiesCache();
     }
 
     @Test

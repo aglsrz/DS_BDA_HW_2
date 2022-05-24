@@ -18,19 +18,19 @@ import java.util.UUID;
 @Import(IgniteConf.class)
 public class ServiceConf {
     @Bean
-    FlightRepository testServiceRepository(Ignite ignite, CacheConfiguration<UUID, FlightEntity> flightCacheConf,
-                                           CacheConfiguration<UUID, FlightAggregation> flightAggregationCacheConfiguration,
-                                           CacheConfiguration<String, CountryAirportDictionary> dictionaryCacheConfiguration){
+    FlightRepository flightRepository(Ignite ignite, CacheConfiguration<UUID, FlightEntity> flightCacheConf,
+                                      CacheConfiguration<UUID, FlightAggregation> flightAggregationCacheConfiguration,
+                                      CacheConfiguration<String, CountryAirportDictionary> dictionaryCacheConfiguration){
         return new FlightRepository(ignite, flightCacheConf, flightAggregationCacheConfiguration, dictionaryCacheConfiguration);
     }
 
     @Bean
-    FlightService testBusinessLogicService(FlightRepository flightRepository){
+    FlightService flightService(FlightRepository flightRepository){
         return new FlightService(flightRepository);
     }
 
     @Bean
-    FlightsController testServiceController(FlightService flightService){
+    FlightsController flightsController(FlightService flightService){
         return new FlightsController(flightService);
     }
 }
