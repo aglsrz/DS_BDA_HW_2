@@ -1,7 +1,7 @@
 from datetime import timedelta, datetime
 import json, random
 
-SIZE = 5000
+SIZE = 3000
 
 START_TIME = datetime.strptime('01/05/22 01:00:00', '%d/%m/%y %H:%M:%S')
 END_TIME = datetime.strptime('01/05/22 06:00:00', '%d/%m/%y %H:%M:%S')
@@ -22,8 +22,12 @@ if __name__ == '__main__':
         airports_data = json.load(json_file)
 
     for i in range(SIZE):
-        rnd_id_1 = random.randint(0, len(airports_data) - 1)
-        rnd_id_2 = random.randint(0, len(airports_data) - 1)
+        rnd_id_1, rnd_id_2 = 0, 0
+        
+        while (rnd_id_1 == rnd_id_2):
+            rnd_id_1 = random.randint(0, len(airports_data) - 1)
+            rnd_id_2 = random.randint(0, len(airports_data) - 1)
+        
         number = random.randrange(1000, 9999)
         deployTime = random_date(START_TIME, END_TIME)
         airportDeploy = airports_data[rnd_id_1]["airport"]
